@@ -17,4 +17,4 @@ This README explains the permission project
 13- chgrp school hello                      Changes group owner of a file
 14- chown vincent:staff *                   Changes user to vincent and group to staff for all files
 15- chown -h vincent:staff _hello           Changes the permissions for the symbolic link not the original file using (-h)
-16- chown --from=guillaume vincent hello    Changes owner of a file only if it is owned by someone specifically  
+16- chown --from=guillaume vincent hello    Changes owner of a file only if it is owned by someone specifically
