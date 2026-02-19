@@ -5,7 +5,7 @@ It explains each command and what it does in the shell.
 
 ---
 
-## 📁 Directory & File Commands
+## Directory & File Commands
 
 ### 0 - Print Working Directory
 
@@ -200,7 +200,7 @@ Creates a directory tree:
 
 ---
 
-## ✅ Summary
+## Summary
 
 This README covers basic shell commands including:
 
