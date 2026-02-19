@@ -1,34 +1,276 @@
-This README is for redirection and filters, serves as indication for commands used in tasks.
+# Holberton School Project: REDIRECTION & FILTERS
 
-0- echo "Hello, World"              This command is used to print a text.
-1- echo "\"(Ôo)'"                   The \ cancels the character that follows it.
-2- cat /etc/passwd                  This one displays the content of a file 
-3- cat /etc/passwd /etc/hosts       Displays content of 2 files
-4- tail -n 10 /etc/passwd           Displays the last n (-n) LINES of the file
-5- head -n 10 /etc/passwd           Displays the first n (-n) LINES of the file
+This project covers **redirection and filtering commands** in the shell.  
+It demonstrates how to:
 
-6- head -n 3 iacta | tail -n 1      Displays the 3rd line only 
-7- echo "Best School" > \\\*\\\\"'\"Best School\"\\'"\\\\\*\$\\\?\\\*\\\*\\\*\\\*\\\*\:\)           Creates this specific file name, using \ to cancel characters that would run commands
+- Print and manipulate text  
+- Redirect output to files  
+- Use filters to process file content  
+- Search and extract information  
 
-8- ls -la > ls_cwd_content          Writes the result of a command in a file using > (Replaces the file with the new one)
-9- tail -n 1 iacta >> iacta         Writes the last line of the file using >> (Duplicates the file if it exists already)
-10- find . -type f -name "*.js"     Deletes all the .js that are FILES (-type f) in the cwd
+This README explains each command used in the project.
 
-11- find -mindepth 1 -type d | wc -l        Counts the number of DIRECTORIES (-type d) in the tree with a depth of 1 (-mindepth) and counts with wc -l
-12- ls -1t | head -n 10                     Displays the newest files with head with only one file per line (-1t)
-13- sort | uniq -u                          Takes a list of word as inputs (sort) and uniq filters the repeated line and makes them appear only once where (-u)
-14- grep "root" /etc/passwd                 Displays the lines containing "root"
-15- grep bin /etc/passwd | wc -l            Displays the number of lines that have "bin" 
-16- grep -A 3 root /etc/passwd              Displays lines with "root" and the three lines AFTER (-A)
-17- grep -v bin /etc/passwd                 Displays all the lines that DONT HAVE (-v) bin
-18- grep "^[A-Za-z]" /etc/ssh/sshd_config   Displays the lines in a file that START (^) with a letter 
-19- tr 'AZ' 'ce'                            Replaces with tr the letter A to Z and c to e, in bash ' ' prevent the shell from interpreting special characters inside them
-20- tr -d 'cC'                              DELETES (-d) all defined letters
-21- rev                                     Reverse the input
-22- cut -d: -f1,6 /etc/passwd | sort        Displays all users and their home directories, sorted by users
+---
 
-22 explanation : 
-cut extracts fields from each line of a file
--d: DELEMITERS to :
-/etc/passwd uses : in the 7 columns that are username:password:UID:GID:info:home:shell
--f1,6 Extracts field 1 and 6 that are username and home
+## 🔹 0 - Print Text
+
+```bash
+echo "Hello, World"
+```
+
+Prints the text `"Hello, World"` to the terminal.
+
+---
+
+## 🔹 1 - Escape Characters
+
+```bash
+echo "\"(Ôo)'"
+```
+
+- The `\` cancels the special meaning of the character that follows it.
+
+---
+
+## 🔹 2 - View File Content
+
+```bash
+cat /etc/passwd
+```
+
+Displays the content of a file.
+
+---
+
+## 🔹 3 - View Multiple Files
+
+```bash
+cat /etc/passwd /etc/hosts
+```
+
+Displays the content of **two files** sequentially.
+
+---
+
+## 🔹 4 - Tail (Last Lines)
+
+```bash
+tail -n 10 /etc/passwd
+```
+
+Displays the **last 10 lines** of a file.  
+- `-n` specifies the number of lines.
+
+---
+
+## 🔹 5 - Head (First Lines)
+
+```bash
+head -n 10 /etc/passwd
+```
+
+Displays the **first 10 lines** of a file.
+
+---
+
+## 🔹 6 - Extract a Specific Line
+
+```bash
+head -n 3 iacta | tail -n 1
+```
+
+Displays the **3rd line** only.
+
+---
+
+## 🔹 7 - Create File with Special Name
+
+```bash
+echo "Best School" > \\\*\\\\"'\"Best School\"\\'"\\\\\*\$\\\?\\\*\\\*\\\*\\\*\\*\:\)
+```
+
+- Uses `\` to escape characters that would otherwise execute commands.  
+- Creates a file with a complex, specific name.
+
+---
+
+## 🔹 8 - Redirect Output to File
+
+```bash
+ls -la > ls_cwd_content
+```
+
+- `>` writes the **output of a command** to a file, replacing its content.
+
+---
+
+## 🔹 9 - Append Output to File
+
+```bash
+tail -n 1 iacta >> iacta
+```
+
+- `>>` appends the output to the file if it already exists.
+
+---
+
+## 🔹 10 - Find Files
+
+```bash
+find . -type f -name "*.js"
+```
+
+- Finds all `.js` files (`-name "*.js"`) that are **files** (`-type f`) in the current directory (`.`).
+
+---
+
+## 🔹 11 - Count Directories
+
+```bash
+find -mindepth 1 -type d | wc -l
+```
+
+- Counts the number of directories (`-type d`) at **depth 1** (`-mindepth 1`)  
+- `wc -l` counts lines
+
+---
+
+## 🔹 12 - Newest Files
+
+```bash
+ls -1t | head -n 10
+```
+
+- `-1t` → list **one file per line**, sorted by modification time  
+- `head -n 10` → display the 10 newest files
+
+---
+
+## 🔹 13 - Unique Lines
+
+```bash
+sort | uniq -u
+```
+
+- `sort` → sorts input  
+- `uniq -u` → filters **lines that appear only once**
+
+---
+
+## 🔹 14 - Search for a String
+
+```bash
+grep "root" /etc/passwd
+```
+
+Displays lines containing `"root"`.
+
+---
+
+## 🔹 15 - Count Lines Matching Pattern
+
+```bash
+grep bin /etc/passwd | wc -l
+```
+
+- Counts lines that contain `"bin"`
+
+---
+
+## 🔹 16 - Lines After a Match
+
+```bash
+grep -A 3 root /etc/passwd
+```
+
+- Displays lines containing `"root"` **and the 3 lines after** (`-A 3`)
+
+---
+
+## 🔹 17 - Exclude Lines Matching Pattern
+
+```bash
+grep -v bin /etc/passwd
+```
+
+- Shows lines **that do NOT contain** `"bin"` (`-v`)
+
+---
+
+## 🔹 18 - Lines Starting with a Letter
+
+```bash
+grep "^[A-Za-z]" /etc/ssh/sshd_config
+```
+
+- `^` → matches the **start of the line**  
+- `[A-Za-z]` → any letter
+
+---
+
+## 🔹 19 - Translate Characters
+
+```bash
+tr 'AZ' 'ce'
+```
+
+- `tr` replaces characters  
+- `' '` prevents shell from interpreting special characters
+
+---
+
+## 🔹 20 - Delete Characters
+
+```bash
+tr -d 'cC'
+```
+
+Deletes all occurrences of `c` and `C`.
+
+---
+
+## 🔹 21 - Reverse Input
+
+```bash
+rev
+```
+
+Reverses the input line by line.
+
+---
+
+## 🔹 22 - Cut & Sort Users
+
+```bash
+cut -d: -f1,6 /etc/passwd | sort
+```
+
+- `cut -d:` → splits fields using `:` as delimiter  
+- `-f1,6` → extracts **field 1 (username)** and **field 6 (home directory)**  
+- `sort` → sorts output by username
+
+---
+
+### 22 Explanation
+
+- `/etc/passwd` fields: `username:password:UID:GID:info:home:shell`  
+- `cut -d: -f1,6` → extracts **username** and **home directory**  
+- `sort` → sorts users alphabetically
+
+---
+
+## Key Concepts Learned
+
+- Printing and escaping text (`echo`)  
+- Viewing file content (`cat`, `head`, `tail`)  
+- Redirection (`>`, `>>`)  
+- Filtering and searching (`grep`, `sort`, `uniq`, `wc`)  
+- Text transformations (`tr`, `rev`)  
+- Field extraction (`cut`)  
+- File and directory operations (`find`)  
+
+---
+
+## Author
+
+Redirection & Filters project from **Holberton School**.
